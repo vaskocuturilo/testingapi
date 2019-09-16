@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 /**
  * The type Data provider storage.
  */
-public final class DataProviderStorage {
+public final class DataProviderAccountInfo {
 
     /**
      * Constant ONE_HUNDRED.
@@ -41,7 +41,7 @@ public final class DataProviderStorage {
     /**
      * Private Constructor.
      */
-    private DataProviderStorage() {
+    private DataProviderAccountInfo() {
     }
 
     /**
@@ -95,7 +95,7 @@ public final class DataProviderStorage {
     public static Object[][] checkNotNullValue() {
         return new Object[][]{
                 {"test", 100},
-                {"TEST_TEST", 14},
+                {"TEST_TEST", 15},
                 {"StOa", 100}
         };
     }
@@ -123,49 +123,6 @@ public final class DataProviderStorage {
     public static Object[][] searchWithExactMatches() {
         return new Object[][]{
                 {"vasko,som", "exact"}
-        };
-    }
-
-    /**
-     * Search not specified object [ ] [ ].
-     *
-     * @return the object [ ] [ ]
-     */
-    @DataProvider(name = "searchWithoutAccountID")
-    public static Object[][] searchWithoutAccountID() {
-        return new Object[][]{
-                {"account_id", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED, null, "error"}
-
-        };
-    }
-
-    /**
-     * Search with not correct id object [ ] [ ].
-     *
-     * @return the object [ ] [ ]
-     */
-    @DataProvider(name = "searchWithNotCorrectID")
-    public static Object[][] searchWithNotCorrectID() {
-        return new Object[][]{
-                {"!!!!!!", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"@!%$#%^%&^%^", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"scscscscscscscscscscscscsc", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"sc", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
-
-        };
-    }
-
-
-    /**
-     * Search with accountID object [ ] [ ].
-     *
-     * @return the object [ ] [ ]
-     */
-    @DataProvider(name = "searchWithAccountID")
-    public static Object[][] searchWithAccountID() {
-        return new Object[][]{
-                {6269, "Som"}
         };
     }
 

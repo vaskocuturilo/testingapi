@@ -4,8 +4,8 @@ import com.wargaming.api.schema.ApiJson;
 import com.wargaming.api.schema.info.PlayerInformation;
 import com.wargaming.api.schema.noaccountid.NoAccountID;
 import com.wargaming.base.BaseApiClass;
-import com.wargaming.data.DataProviderStorage;
 import com.wargaming.api.schema.GetRequest;
+import com.wargaming.data.DataProviderAccountList;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
@@ -24,7 +24,7 @@ public class AccountInfoList extends BaseApiClass {
      */
     private static final String ACCOUNT_ID = "&account_id=6269";
 
-    @Test(dataProvider = "searchWithoutAccountID", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithoutAccountID", dataProviderClass = DataProviderAccountList.class)
     @Story("Check information without account id.")
     public void testCheckInfoWithoutAccountID(String field, String message, int code, String value, String status) {
         final String resultsApiJson = GetRequest.checkErrorStatus(INFO);
@@ -51,7 +51,7 @@ public class AccountInfoList extends BaseApiClass {
     }
 
 
-    @Test(dataProvider = "searchWithNotCorrectID", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithNotCorrectID", dataProviderClass = DataProviderAccountList.class)
     @Story("Check information with not correct account id.")
     public void testCheckInfoWithNotCorrectData(String text, String status, String message, int code) {
         final String resultsApiJson = GetRequest.checkSearch(INFO, text);

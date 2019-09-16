@@ -4,7 +4,7 @@ import com.wargaming.api.schema.ApiJson;
 import com.wargaming.api.schema.notspecified.NotSpecified;
 import com.wargaming.api.schema.search.Search;
 import com.wargaming.base.BaseApiClass;
-import com.wargaming.data.DataProviderStorage;
+import com.wargaming.data.DataProviderAccountInfo;
 import com.wargaming.api.schema.GetRequest;
 import io.qameta.allure.Story;
 import com.wargaming.listener.LogListener;
@@ -27,7 +27,7 @@ public class AccountListTest extends BaseApiClass {
      */
     private static final String SEARCH = "&search=";
 
-    @Test(dataProvider = "checkNotNullValue", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "checkNotNullValue", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check that the search returns non-empty values.")
     public void testCheckThatDataIsNoEmpty(String text, int count) {
         final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
@@ -39,7 +39,7 @@ public class AccountListTest extends BaseApiClass {
 
     }
 
-    @Test(dataProvider = "searchNotSpecified", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchNotSpecified", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Do not specify a value for the search parameter.")
     public void testCheckSearchNotSpecified(String field, String message, int code, String value, String status) {
         final String resultsApiJson = GetRequest.checkErrorStatus(PLAYERS);
@@ -53,7 +53,7 @@ public class AccountListTest extends BaseApiClass {
         assertEquals(result.getStatus(), status);
     }
 
-    @Test(dataProvider = "searchWithParameters", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithParameters", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check search with parameters.")
     public void testCheckSearchSpecified(String text, String status, int meta) {
         final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
@@ -65,7 +65,7 @@ public class AccountListTest extends BaseApiClass {
         assertEquals(result.getMeta().getCount(), meta);
     }
 
-    @Test(dataProvider = "searchWithNotCorrectData", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithNotCorrectData", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check search with parameters.")
     public void testCheckSearchSpecifiedWithNotCorrectData(String text, String status, String message, int code) {
         final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
@@ -77,7 +77,7 @@ public class AccountListTest extends BaseApiClass {
         assertEquals(result.getError().getCode(), code);
     }
 
-    @Test(dataProvider = "searchWithLimit", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithLimit", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check that search with number of records returned.")
     public void testCheckSearchSpecifiedWithLimit(String text, int limit, String status, int checkLimit) {
         final String resultsApiJson = GetRequest.checkSearchWithLimit(text, limit);
@@ -89,7 +89,7 @@ public class AccountListTest extends BaseApiClass {
         assertEquals(result.getMeta().getCount(), checkLimit);
     }
 
-    @Test(dataProvider = "searchWithExactMatches", dataProviderClass = DataProviderStorage.class)
+    @Test(dataProvider = "searchWithExactMatches", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check with search by strict match of player name case-insensitive.")
     public void testCheckSearchForExactMatches(String text, String typeSearch) {
         final String resultsApiJson = GetRequest.checkSearchWithType(text, typeSearch);

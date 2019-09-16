@@ -107,7 +107,7 @@ public final class GetRequest extends AbstractController {
     }
 
     /**
-     * Check status with .
+     * Check search with type.
      *
      * @param text       the text.
      * @param typeSearch type of search( -exact).
