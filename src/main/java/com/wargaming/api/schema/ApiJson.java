@@ -27,7 +27,7 @@ public final class ApiJson {
      *
      * @param json this is json.
      */
-    private ApiJson(final String json) {
+    protected ApiJson(final String json) {
         this.jsonPath = JsonPath.from(json);
     }
 

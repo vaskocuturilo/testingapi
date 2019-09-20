@@ -1,8 +1,16 @@
 package com.wargaming.data;
 
+import com.wargaming.api.schema.SearchApiBuilder;
 import org.testng.annotations.DataProvider;
 
+import java.util.ResourceBundle;
+
 public class DataProviderAccountList {
+
+    /**
+     * The Api key.
+     */
+    public String applicationId = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
     /**
      * Constant SEARCH_NOT_SPECIFIED.
@@ -55,6 +63,19 @@ public class DataProviderAccountList {
     public static Object[][] searchWithAccountID() {
         return new Object[][]{
                 {6269, "Som"}
+        };
+    }
+
+
+    /**
+     * Search with accountID object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
+    @DataProvider(name = "insertSearchData")
+    public Object[][] insertSearchData() {
+        return new Object[][]{
+                {new SearchApiBuilder(applicationId, "TEST").build().getSearchApiMap()}
         };
     }
 
