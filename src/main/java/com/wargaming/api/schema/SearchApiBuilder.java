@@ -29,16 +29,16 @@ public class SearchApiBuilder {
     /**
      * Instantiates a new Search api builder.
      *
-     * @param applicationId the application id
-     * @param query         the query
+     * @param applicationIdData the application id
+     * @param queryData         the query
      */
-    public SearchApiBuilder(final String applicationId, final String query) {
+    public SearchApiBuilder(final String applicationIdData, final String queryData) {
 
-        this.applicationId = applicationId;
-        this.searchApiMap.put(APPLICATION_ID.getParameter(), applicationId);
+        this.applicationId = applicationIdData;
+        this.searchApiMap.put(APPLICATION_ID.getParameter(), applicationIdData);
 
-        this.query = query;
-        this.searchApiMap.put(QUERY.getParameter(), query);
+        this.query = queryData;
+        this.searchApiMap.put(QUERY.getParameter(), queryData);
 
 
     }

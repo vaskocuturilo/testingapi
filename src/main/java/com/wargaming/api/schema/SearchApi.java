@@ -26,14 +26,14 @@ public class SearchApi {
     /**
      * Instantiates a new Search api.
      *
-     * @param applicationId the application id
-     * @param query         the query
-     * @param searchApiMap  the search api map
+     * @param applicationIdData the application id
+     * @param queryData         the query
+     * @param searchApiMapData  the search api map
      */
-    public SearchApi(final String applicationId, final String query, final ConcurrentHashMap<String, String> searchApiMap) {
-        this.applicationId = applicationId;
-        this.query = query;
-        this.searchApiMap.putAll(searchApiMap);
+    public SearchApi(final String applicationIdData, final String queryData, final ConcurrentHashMap<String, String> searchApiMapData) {
+        this.applicationId = applicationIdData;
+        this.query = queryData;
+        this.searchApiMap.putAll(searchApiMapData);
 
     }
 

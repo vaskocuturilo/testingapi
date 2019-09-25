@@ -1,6 +1,6 @@
 package com.wargaming.api.schema;
 
-import java.util.Map;
+import java.util.ResourceBundle;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,6 +9,12 @@ import static io.restassured.RestAssured.given;
  */
 @SuppressWarnings("PMD.LawOfDemeter")
 public final class GetRequest extends AbstractController {
+
+    /**
+     * The constant APPLICATION_ID.
+     */
+    private static final String APPLICATION_ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
+
 
     /**
      * Constant SEARCH. Endpoint for GetRequest.
@@ -133,12 +139,13 @@ public final class GetRequest extends AbstractController {
     /**
      * Make request api json.
      *
-     * @param query the query
+     * @param text this is text for search.
      * @return the api json
      */
-    public static ApiJson makeRequest(final Map<String, String> query) {
+    public static ApiJson makeRequest(final String text) {
         final String json = given()
-                .params(query)
+                .queryParam("application_id", APPLICATION_ID)
+                .queryParam("search", text)
                 .log()
                 .all()
                 .request()

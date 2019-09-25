@@ -5,12 +5,16 @@ import org.testng.annotations.DataProvider;
 
 import java.util.ResourceBundle;
 
+
+/**
+ * The type Data provider account list.
+ */
 public class DataProviderAccountList {
 
     /**
      * The Api key.
      */
-    public String applicationId = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
+    private String applicationId = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
     /**
      * Constant SEARCH_NOT_SPECIFIED.
