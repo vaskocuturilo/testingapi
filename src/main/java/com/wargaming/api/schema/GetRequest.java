@@ -1,5 +1,6 @@
 package com.wargaming.api.schema;
 
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import static io.restassured.RestAssured.given;
@@ -139,13 +140,11 @@ public final class GetRequest extends AbstractController {
     /**
      * Make request api json.
      *
-     * @param text this is text for search.
      * @return the api json
      */
-    public static ApiJson makeRequest(final String text) {
+    public static ApiJson makeRequest(Map<String, String> query) {
         final String json = given()
-                .queryParam("application_id", APPLICATION_ID)
-                .queryParam("search", text)
+                .params(query)
                 .log()
                 .all()
                 .request()
