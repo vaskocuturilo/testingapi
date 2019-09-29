@@ -18,19 +18,14 @@ import static org.testng.Assert.assertTrue;
 public class AccountListTest extends BaseApiClass {
 
     /**
-     * Constant PLAYERS. Endpoint.
+     * Constant LIST. Endpoint.
      */
-    private static final String PLAYERS = "/list/?application_id=78cd8324660d47c7b417049713b49bef";
-
-    /**
-     * Constant SEARCH. Endpoint.
-     */
-    private static final String SEARCH = "&search=";
+    private static final String LIST = "/list/";
 
     @Test(dataProvider = "checkNotNullValue", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check that the search returns non-empty values.")
     public void testCheckThatDataIsNoEmpty(String text, int count) {
-        final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
+        final String resultsApiJson = GetRequest.checkSearch(LIST, text);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 
@@ -42,7 +37,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchNotSpecified", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Do not specify a value for the search parameter.")
     public void testCheckSearchNotSpecified(String field, String message, int code, String value, String status) {
-        final String resultsApiJson = GetRequest.checkErrorStatus(PLAYERS);
+        final String resultsApiJson = GetRequest.checkErrorStatus(LIST);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final NotSpecified result = apiJson.getNotSpecified();
 
@@ -56,7 +51,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithParameters", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check search with parameters.")
     public void testCheckSearchSpecified(String text, String status, int meta) {
-        final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
+        final String resultsApiJson = GetRequest.checkSearch(LIST, text);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 
@@ -68,7 +63,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithNotCorrectData", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check search with parameters.")
     public void testCheckSearchSpecifiedWithNotCorrectData(String text, String status, String message, int code) {
-        final String resultsApiJson = GetRequest.checkSearch(PLAYERS + SEARCH, text);
+        final String resultsApiJson = GetRequest.checkSearch(LIST, text);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final NotSpecified result = apiJson.getNotSpecified();
 
@@ -80,7 +75,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithLimit", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check that search with number of records returned.")
     public void testCheckSearchSpecifiedWithLimit(String text, int limit, String status, int checkLimit) {
-        final String resultsApiJson = GetRequest.checkSearchWithLimit(text, limit);
+        final String resultsApiJson = GetRequest.checkSearchWithLimit(LIST, text, limit);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 
@@ -92,7 +87,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithExactMatches", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check with search by strict match of player name case-insensitive.")
     public void testCheckSearchForExactMatches(String text, String typeSearch) {
-        final String resultsApiJson = GetRequest.checkSearchWithType(text, typeSearch);
+        final String resultsApiJson = GetRequest.checkSearchWithType(LIST, text, typeSearch);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 

@@ -17,12 +17,7 @@ public class AccountInfoListTest extends BaseApiClass {
     /**
      * Constant INFO. Endpoint.
      */
-    private static final String INFO = "/info/?application_id=78cd8324660d47c7b417049713b49bef";
-
-    /**
-     * Constant ACCOUNT_ID. Endpoint.
-     */
-    private static final String ACCOUNT_ID = "&account_id=6269";
+    private static final String INFO = "/info/";
 
     @Test(dataProvider = "searchWithoutAccountID", dataProviderClass = DataProviderAccountList.class)
     @Story("Check information without account id.")
@@ -41,7 +36,7 @@ public class AccountInfoListTest extends BaseApiClass {
     @Test
     @Story("Check info with account id.")
     public void testCheckInfoWithAccountID() {
-        final String resultsApiJson = GetRequest.checkSearch(INFO, ACCOUNT_ID);
+        final String resultsApiJson = GetRequest.checkSearchWithAccount(INFO);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final PlayerInformation result = apiJson.getPlayerInformation();
 

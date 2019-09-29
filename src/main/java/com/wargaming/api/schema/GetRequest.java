@@ -16,21 +16,10 @@ public final class GetRequest extends AbstractController {
      */
     private static final String APPLICATION_ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
-
     /**
-     * Constant SEARCH. Endpoint for GetRequest.
+     * The constant ACCOUNT_ID.
      */
-    private static final String SEARCH = "/list/?application_id=78cd8324660d47c7b417049713b49bef&search=";
-
-    /**
-     * Constant LIMIT. Endpoint for GetRequest.
-     */
-    private static final String LIMIT = "&limit=";
-
-    /**
-     * Constant TYPE. Endpoint for GetRequest.
-     */
-    private static final String TYPE = "&type=";
+    private static final String ACCOUNT_ID = ResourceBundle.getBundle("test").getString("ACCOUNT_ID");
 
     /**
      * Constant LIST. Endpoint for GetRequest.
@@ -66,6 +55,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkErrorStatus(final String url) {
         final String json = given(reqSpec)
+                .queryParam("application_id", APPLICATION_ID)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
@@ -86,12 +76,14 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text) {
         final String json = given(reqSpec)
+                .queryParam("application_id", APPLICATION_ID)
+                .queryParam("search", text)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
                 .log().all()
                 .when()
-                .get(url + text)
+                .get(url)
                 .getBody()
                 .asString();
         return json;
@@ -100,18 +92,22 @@ public final class GetRequest extends AbstractController {
     /**
      * Check status with limit string.
      *
+     * @param url   this is url for api.
      * @param text  the text.
      * @param limit the limit.
      * @return the string
      */
-    public static String checkSearchWithLimit(final String text, final int limit) {
+    public static String checkSearchWithLimit(final String url, final String text, final int limit) {
         final String json = given(reqSpec)
+                .queryParam("application_id", APPLICATION_ID)
+                .queryParam("search", text)
+                .queryParam("limit", limit)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
                 .log().all()
                 .when()
-                .get(SEARCH + text + LIMIT + limit)
+                .get(url)
                 .getBody()
                 .asString();
         return json;
@@ -120,18 +116,22 @@ public final class GetRequest extends AbstractController {
     /**
      * Check search with type.
      *
+     * @param url        this is url for api.
      * @param text       the text.
      * @param typeSearch type of search( -exact).
      * @return the string
      */
-    public static String checkSearchWithType(final String text, final String typeSearch) {
+    public static String checkSearchWithType(final String url, final String text, final String typeSearch) {
         final String json = given(reqSpec)
+                .queryParam("application_id", APPLICATION_ID)
+                .queryParam("search", text)
+                .queryParam("type", typeSearch)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
                 .log().all()
                 .when()
-                .get(SEARCH + text + TYPE + typeSearch)
+                .get(url)
                 .getBody()
                 .asString();
         return json;
@@ -140,9 +140,10 @@ public final class GetRequest extends AbstractController {
     /**
      * Make request api json.
      *
-     * @return the api json
+     * @param query this is query for api.
+     * @return the api json.
      */
-    public static ApiJson makeRequest(Map<String, String> query) {
+    public static ApiJson makeRequest(final Map<String, String> query) {
         final String json = given()
                 .params(query)
                 .log()
@@ -153,8 +154,29 @@ public final class GetRequest extends AbstractController {
                 .getBody().asString();
 
         return new ApiJson(json);
-
-
     }
+
+    /**
+     * Method check search with account id.
+     *
+     * @param url this is url.
+     * @return the string
+     */
+    public static String checkSearchWithAccount(final String url) {
+        final String json = given(reqSpec)
+                .queryParam("application_id", APPLICATION_ID)
+                .queryParam("account_id", ACCOUNT_ID)
+                .then()
+                .spec(resSpec)
+                .statusCode(SUCCESS)
+                .log().all()
+                .when()
+                .get(url)
+                .getBody()
+                .asString();
+
+        return json;
+    }
+
 
 }

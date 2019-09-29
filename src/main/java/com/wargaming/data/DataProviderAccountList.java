@@ -48,10 +48,10 @@ public class DataProviderAccountList {
     @DataProvider(name = "searchWithNotCorrectID")
     public static Object[][] searchWithNotCorrectID() {
         return new Object[][]{
-                {"!!!!!!", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"@!%$#%^%&^%^", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"scscscscscscscscscscscscsc", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
-                {"sc", "error", "INVALID_APPLICATION_ID", NOT_ENOUGH_SEARCH_LENGTH},
+                {"!!!!!!", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
+                {"@!%$#%^%&^%^", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
+                {"scscscscscscscscscscscscsc", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
+                {"sc", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
                 {"", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
 
         };
