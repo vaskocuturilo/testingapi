@@ -75,7 +75,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithLimit", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check that search with number of records returned.")
     public void testCheckSearchSpecifiedWithLimit(String text, int limit, String status, int checkLimit) {
-        final String resultsApiJson = GetRequest.checkSearchWithLimit(LIST, text, limit);
+        final String resultsApiJson = GetRequest.checkSearch(LIST, text, limit);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 
@@ -87,7 +87,7 @@ public class AccountListTest extends BaseApiClass {
     @Test(dataProvider = "searchWithExactMatches", dataProviderClass = DataProviderAccountInfo.class)
     @Story("Check with search by strict match of player name case-insensitive.")
     public void testCheckSearchForExactMatches(String text, String typeSearch) {
-        final String resultsApiJson = GetRequest.checkSearchWithType(LIST, text, typeSearch);
+        final String resultsApiJson = GetRequest.checkSearch(LIST, text, typeSearch);
         final ApiJson apiJson = ApiJson.from(resultsApiJson);
         final Search result = apiJson.getSpecifiedSearch();
 

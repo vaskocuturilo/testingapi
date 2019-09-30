@@ -97,7 +97,7 @@ public final class GetRequest extends AbstractController {
      * @param limit the limit.
      * @return the string
      */
-    public static String checkSearchWithLimit(final String url, final String text, final int limit) {
+    public static String checkSearch(final String url, final String text, final int limit) {
         final String json = given(reqSpec)
                 .queryParam("application_id", APPLICATION_ID)
                 .queryParam("search", text)
@@ -121,7 +121,7 @@ public final class GetRequest extends AbstractController {
      * @param typeSearch type of search( -exact).
      * @return the string
      */
-    public static String checkSearchWithType(final String url, final String text, final String typeSearch) {
+    public static String checkSearch(final String url, final String text, final String typeSearch) {
         final String json = given(reqSpec)
                 .queryParam("application_id", APPLICATION_ID)
                 .queryParam("search", text)
