@@ -12,24 +12,48 @@ import org.testng.ITestResult;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+/**
+ * The type Log listener.
+ */
 public class LogListener implements ITestListener {
+
+    /**
+     * The private value.
+     */
     private ByteArrayOutputStream request = new ByteArrayOutputStream();
+
+    /**
+     * The private value.
+     */
     private ByteArrayOutputStream response = new ByteArrayOutputStream();
 
     private PrintStream requestVar = new PrintStream(request, true);
+
+    /**
+     * The private value.
+     */
     private PrintStream responseVar = new PrintStream(response, true);
 
 
+    /**
+     * The method onStart.
+     */
     public void onStart(final ITestContext iTestContext) {
         RestAssured.filters(new ResponseLoggingFilter(LogDetail.ALL, responseVar),
                 new RequestLoggingFilter(LogDetail.ALL, requestVar));
     }
 
+    /**
+     * The method onTestSuccess.
+     */
     public void onTestSuccess(final ITestResult iTestResult) {
         logRequest(request);
         logResponse(response);
     }
 
+    /**
+     * The method onTestFailure.
+     */
     public void onTestFailure(final ITestResult iTestResult) {
 
     }

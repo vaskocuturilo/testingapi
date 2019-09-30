@@ -17,15 +17,18 @@ public class DataProviderAccountList {
     private String applicationId = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
     /**
-     * Constant SEARCH_NOT_SPECIFIED.
+     * Constant NOT_SPECIFIED.
      */
-    private static final int SEARCH_NOT_SPECIFIED = 402;
+    private static final int NOT_SPECIFIED = 402;
 
     /**
-     * Constant NOT_ENOUGH_SEARCH_LENGTH.
+     * The default constructor.
      */
-
-    private static final int NOT_ENOUGH_SEARCH_LENGTH = 407;
+    public DataProviderAccountList() {
+        super();
+        //empty
+        return;
+    }
 
     /**
      * Search not specified object [ ] [ ].
@@ -35,7 +38,7 @@ public class DataProviderAccountList {
     @DataProvider(name = "searchWithoutAccountID")
     public static Object[][] searchWithoutAccountID() {
         return new Object[][]{
-                {"account_id", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED, null, "error"}
+                {"account_id", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED, null, "error"}
 
         };
     }
@@ -48,11 +51,11 @@ public class DataProviderAccountList {
     @DataProvider(name = "searchWithNotCorrectID")
     public static Object[][] searchWithNotCorrectID() {
         return new Object[][]{
-                {"!!!!!!", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
-                {"@!%$#%^%&^%^", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
-                {"scscscscscscscscscscscscsc", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
-                {"sc", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
-                {"", "error", "ACCOUNT_ID_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
+                {"!!!!!!", "error", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED},
+                {"@!%$#%^%&^%^", "error", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED},
+                {"scscscscscscscscscscscscsc", "error", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED},
+                {"sc", "error", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED},
+                {"", "error", "ACCOUNT_ID_NOT_SPECIFIED", NOT_SPECIFIED},
 
         };
     }

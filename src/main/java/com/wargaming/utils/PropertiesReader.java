@@ -69,23 +69,4 @@ public final class PropertiesReader {
 
         return getProperty(name);
     }
-
-
-    /**
-     * Method loadPropertyName.
-     *
-     * @param resourcePath String name file.
-     * @return resourceString. resource as string
-     */
-    public static String getResourceAsString(final String resourcePath) {
-        String resourceString = "";
-        try {
-            resourceString = Resources.toString(Resources.getResource(resourcePath), Charsets.UTF_8);
-        } catch (IOException e) {
-            if (LOGGER.isDebugEnabled()) {
-                LOGGER.debug("Failed to read resource as string: " + resourcePath, e);
-            }
-        }
-        return resourceString;
-    }
 }

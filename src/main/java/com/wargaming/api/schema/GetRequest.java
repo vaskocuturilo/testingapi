@@ -12,14 +12,19 @@ import static io.restassured.RestAssured.given;
 public final class GetRequest extends AbstractController {
 
     /**
-     * The constant APPLICATION_ID.
+     * The constant ID.
      */
-    private static final String APPLICATION_ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
+    private static final String ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
     /**
      * The constant ACCOUNT_ID.
      */
     private static final String ACCOUNT_ID = ResourceBundle.getBundle("test").getString("ACCOUNT_ID");
+
+    /**
+     * The constant APPLICATION.
+     */
+    private static final String APPLICATION = "application_id";
 
     /**
      * Constant LIST. Endpoint for GetRequest.
@@ -55,7 +60,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkErrorStatus(final String url) {
         final String json = given(reqSpec)
-                .queryParam("application_id", APPLICATION_ID)
+                .queryParam(APPLICATION, ID)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
@@ -76,7 +81,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text) {
         final String json = given(reqSpec)
-                .queryParam("application_id", APPLICATION_ID)
+                .queryParam(APPLICATION, ID)
                 .queryParam("search", text)
                 .then()
                 .spec(resSpec)
@@ -99,7 +104,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text, final int limit) {
         final String json = given(reqSpec)
-                .queryParam("application_id", APPLICATION_ID)
+                .queryParam(APPLICATION, ID)
                 .queryParam("search", text)
                 .queryParam("limit", limit)
                 .then()
@@ -123,7 +128,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text, final String typeSearch) {
         final String json = given(reqSpec)
-                .queryParam("application_id", APPLICATION_ID)
+                .queryParam(APPLICATION, ID)
                 .queryParam("search", text)
                 .queryParam("type", typeSearch)
                 .then()
@@ -164,7 +169,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearchWithAccount(final String url) {
         final String json = given(reqSpec)
-                .queryParam("application_id", APPLICATION_ID)
+                .queryParam(APPLICATION, ID)
                 .queryParam("account_id", ACCOUNT_ID)
                 .then()
                 .spec(resSpec)

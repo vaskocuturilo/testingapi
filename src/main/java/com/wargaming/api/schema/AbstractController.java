@@ -24,7 +24,7 @@ public abstract class AbstractController {
      * Check Content type(Must be JSON),
      * return log detail(ALL).
      */
-    protected static RequestSpecification reqSpec = new RequestSpecBuilder()
+    protected final static RequestSpecification reqSpec = new RequestSpecBuilder()
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
@@ -35,7 +35,7 @@ public abstract class AbstractController {
      * Check Content type(Must be JSON),
      * Check response time (Must be less 15 sec.).
      */
-    protected static ResponseSpecification resSpec = new ResponseSpecBuilder()
+    protected final static ResponseSpecification resSpec = new ResponseSpecBuilder()
             .expectContentType(ContentType.JSON)
             .expectResponseTime(Matchers.lessThan(TIME)).build();
 

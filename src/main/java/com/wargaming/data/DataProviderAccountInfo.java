@@ -28,15 +28,15 @@ public final class DataProviderAccountInfo {
     private static final String OK_STRING = "ok";
 
     /**
-     * Constant SEARCH_NOT_SPECIFIED.
+     * Constant NOT_SPECIFIED.
      */
-    private static final int SEARCH_NOT_SPECIFIED = 402;
+    private static final int NOT_SPECIFIED = 402;
 
     /**
-     * Constant NOT_ENOUGH_SEARCH_LENGTH.
+     * Constant NOT_ENOUGH_LENGTH.
      */
 
-    private static final int NOT_ENOUGH_SEARCH_LENGTH = 407;
+    private static final int NOT_ENOUGH_LENGTH = 407;
 
     /**
      * Private Constructor.
@@ -52,7 +52,7 @@ public final class DataProviderAccountInfo {
     @DataProvider(name = "searchNotSpecified")
     public static Object[][] searchNotSpecified() {
         return new Object[][]{
-                {"search", "SEARCH_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED, null, "error"},
+                {"search", "NOT_SPECIFIED", NOT_SPECIFIED, null, "error"},
         };
     }
 
@@ -76,11 +76,11 @@ public final class DataProviderAccountInfo {
     @DataProvider(name = "searchWithNotCorrectData")
     public static Object[][] searchWithNotCorrectData() {
         return new Object[][]{
-                {"!!!!!!", "error", "INVALID_SEARCH", NOT_ENOUGH_SEARCH_LENGTH},
-                {"@!%$#%^%&^%^", "error", "INVALID_SEARCH", NOT_ENOUGH_SEARCH_LENGTH},
-                {"scscscscscscscscscscscscsc", "error", "INVALID_SEARCH", NOT_ENOUGH_SEARCH_LENGTH},
-                {"sc", "error", "NOT_ENOUGH_SEARCH_LENGTH", NOT_ENOUGH_SEARCH_LENGTH},
-                {"", "error", "SEARCH_NOT_SPECIFIED", SEARCH_NOT_SPECIFIED},
+                {"!!!!!!", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
+                {"@!%$#%^%&^%^", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
+                {"scscscscscscscscscscscscsc", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
+                {"sc", "error", "NOT_ENOUGH_LENGTH", NOT_ENOUGH_LENGTH},
+                {"", "error", "NOT_SPECIFIED", NOT_SPECIFIED},
 
         };
     }
