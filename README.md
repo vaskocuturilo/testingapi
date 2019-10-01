@@ -19,7 +19,7 @@
 
 ## Instructions how to run:
 Execute command 
-to run test ```gradle clean test```
+to run test ```gradle clean test -Penv=prod```
 to generate report ```gradle allureReport, gradle allureServe```
 
 **List of technologies**: Java 8, Gradle, TestNG, Rest-assured, PageObject.
