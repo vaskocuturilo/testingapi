@@ -52,7 +52,7 @@ public final class DataProviderAccountInfo {
     @DataProvider(name = "searchNotSpecified")
     public static Object[][] searchNotSpecified() {
         return new Object[][]{
-                {"search", "NOT_SPECIFIED", NOT_SPECIFIED, null, "error"},
+                {"search", "SEARCH_NOT_SPECIFIED", NOT_SPECIFIED, null, "error"},
         };
     }
 
@@ -79,8 +79,8 @@ public final class DataProviderAccountInfo {
                 {"!!!!!!", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
                 {"@!%$#%^%&^%^", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
                 {"scscscscscscscscscscscscsc", "error", "INVALID_SEARCH", NOT_ENOUGH_LENGTH},
-                {"sc", "error", "NOT_ENOUGH_LENGTH", NOT_ENOUGH_LENGTH},
-                {"", "error", "NOT_SPECIFIED", NOT_SPECIFIED},
+                {"sc", "error", "NOT_ENOUGH_SEARCH_LENGTH", NOT_ENOUGH_LENGTH},
+                {"", "error", "SEARCH_NOT_SPECIFIED", NOT_SPECIFIED},
 
         };
     }

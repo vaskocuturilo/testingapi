@@ -3,7 +3,7 @@ package com.wargaming.base;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeMethod;
 
-import static com.wargaming.utils.PropertiesReader.loadPropertyName;
+import static com.wargaming.webconfig.WebConfig.BASE_CONFIG;
 
 /**
  * The class Base Api class.
@@ -11,7 +11,7 @@ import static com.wargaming.utils.PropertiesReader.loadPropertyName;
 public class BaseApiClass {
 
     /**
-     * Default constructor.
+     * The default constructor.
      */
     public BaseApiClass() {
         super();
@@ -24,7 +24,9 @@ public class BaseApiClass {
      * baseURi this is static value. This is not a good.
      */
     @BeforeMethod(alwaysRun = true)
-    public void beforeTest() {
-        RestAssured.baseURI = loadPropertyName("API_BASE_URL");
+    public static void beforeTest() {
+
+        RestAssured.baseURI = BASE_CONFIG.getApiUrl();
+
     }
 }
