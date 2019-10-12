@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.annotation.Generated;
 
-@SuppressWarnings({"PMD.MethodArgumentCouldBeFinal" , "PMD.ShortVariable", "PMD.LongVariable","PMD.ShortClassName"})
+@SuppressWarnings({"PMD.MethodArgumentCouldBeFinal", "PMD.ShortVariable", "PMD.LongVariable", "PMD.ShortClassName"})
 @Generated("com.robohorse.robopojogenerator")
 public class Clan {
 
