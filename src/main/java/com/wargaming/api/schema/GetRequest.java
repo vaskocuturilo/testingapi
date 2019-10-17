@@ -14,7 +14,7 @@ public final class GetRequest extends AbstractController {
     /**
      * The constant ID.
      */
-    private static final String ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
+    private static final String APP_ID = ResourceBundle.getBundle("test").getString("APPLICATION_ID");
 
     /**
      * The constant ACCOUNT_ID.
@@ -60,7 +60,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkErrorStatus(final String url) {
         final String json = given(reqSpec)
-                .queryParam(APPLICATION, ID)
+                .queryParam(APPLICATION, APP_ID)
                 .then()
                 .spec(resSpec)
                 .statusCode(SUCCESS)
@@ -81,7 +81,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text) {
         final String json = given(reqSpec)
-                .queryParam(APPLICATION, ID)
+                .queryParam(APPLICATION, APP_ID)
                 .queryParam("search", text)
                 .then()
                 .spec(resSpec)
@@ -104,7 +104,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text, final int limit) {
         final String json = given(reqSpec)
-                .queryParam(APPLICATION, ID)
+                .queryParam(APPLICATION, APP_ID)
                 .queryParam("search", text)
                 .queryParam("limit", limit)
                 .then()
@@ -128,7 +128,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearch(final String url, final String text, final String typeSearch) {
         final String json = given(reqSpec)
-                .queryParam(APPLICATION, ID)
+                .queryParam(APPLICATION, APP_ID)
                 .queryParam("search", text)
                 .queryParam("type", typeSearch)
                 .then()
@@ -169,7 +169,7 @@ public final class GetRequest extends AbstractController {
      */
     public static String checkSearchWithAccount(final String url) {
         final String json = given(reqSpec)
-                .queryParam(APPLICATION, ID)
+                .queryParam(APPLICATION, APP_ID)
                 .queryParam("account_id", ACCOUNT_ID)
                 .then()
                 .spec(resSpec)
