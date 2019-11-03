@@ -5,13 +5,16 @@ import com.wargaming.api.schema.GetRequest;
 import com.wargaming.api.schema.notspecified.NotSpecified;
 import com.wargaming.base.BaseApiClass;
 import com.wargaming.data.DataProviderAccountList;
+import com.wargaming.listener.LogListener;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
+@Listeners(LogListener.class)
 public class AccountTest extends BaseApiClass {
 
     @Test(dataProvider = "insertSearchData", dataProviderClass = DataProviderAccountList.class)

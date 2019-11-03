@@ -6,12 +6,15 @@ import com.wargaming.api.schema.noaccountid.NoAccountID;
 import com.wargaming.base.BaseApiClass;
 import com.wargaming.api.schema.GetRequest;
 import com.wargaming.data.DataProviderAccountList;
+import com.wargaming.listener.LogListener;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Listeners(LogListener.class)
 public class AccountInfoListTest extends BaseApiClass {
 
     /**
