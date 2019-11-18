@@ -8,6 +8,7 @@ import org.aeonbits.owner.ConfigFactory;
  */
 @Config.Sources({"classpath:${env}.properties"})
 public interface WebConfig extends Config {
+
     /**
      * Value BASE_CONFIG.
      */
