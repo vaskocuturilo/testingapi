@@ -232,7 +232,7 @@ public class All {
      *
      * @param piercings the piercings
      */
-    public void setPiercings(int piercings) {
+    public void setPiercings(final int piercings) {
         this.piercings = piercings;
     }
 
