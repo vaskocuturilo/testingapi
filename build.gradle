@@ -46,6 +46,9 @@ dependencies {
 
 }
 
+tasks.withType(Test) {
+    systemProperty 'env', System.getProperty('env', 'env')
+}
 test {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
